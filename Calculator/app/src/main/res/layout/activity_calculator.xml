@@ -53,19 +53,18 @@
         android:id="@+id/finalBillTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/billTextView"
+        android:layout_alignStart="@+id/IntroTextView"
         android:layout_below="@+id/billEditText"
-        android:layout_marginTop="77dp"
+        android:layout_marginTop="25dp"
         android:text="@string/final_bill_text_view" />
 
     <EditText
         android:id="@+id/finalBillEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/billEditText"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="64dp"
-        android:layout_toEndOf="@+id/finalBillTextView"
+        android:layout_alignBaseline="@+id/finalBillTextView"
+        android:layout_alignBottom="@+id/finalBillTextView"
+        android:layout_alignEnd="@+id/tipEditText"
         android:ems="10"
         android:inputType="textPersonName|numberDecimal"
         android:text="@string/bill_edit_view" />
@@ -74,20 +73,142 @@
         android:id="@+id/SeekBarTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/billTextView"
         android:layout_below="@+id/finalBillEditText"
-        android:layout_marginTop="65dp"
-        android:layout_toEndOf="@+id/billTextView"
+        android:layout_marginTop="15dp"
         android:text="@string/change_tip_text_view" />
 
     <SeekBar
         android:id="@+id/SeekBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/finalBillEditText"
-        android:layout_alignStart="@+id/SeekBarTextView"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/SeekBarTextView"
-        android:layout_marginTop="26dp"
         android:progress="15" />
+
+    <TextView
+        android:id="@+id/IntroTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SeekBar"
+        android:layout_marginTop="46dp"
+        android:layout_toStartOf="@+id/finalBillEditText"
+        android:text="@string/intro_text_view" />
+
+    <CheckBox
+        android:id="@+id/FriendlyCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/IntroTextView"
+        android:text="@string/intro_friendly_text_view" />
+
+    <CheckBox
+        android:id="@+id/SpecialCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/FriendlyCheckBox"
+        android:layout_centerHorizontal="true"
+        android:text="@string/intro_specials_text_view" />
+
+    <CheckBox
+        android:id="@+id/OpinionCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/SpecialCheckBox"
+        android:text="@string/intro_opinion_text_view" />
+
+    <TextView
+        android:id="@+id/AvailabilityTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/FriendlyCheckBox"
+        android:layout_below="@+id/FriendlyCheckBox"
+        android:text="@string/available_text_view" />
+
+    <RadioGroup
+        android:id="@+id/availableRadio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/AvailabilityTextView"
+        android:layout_marginTop="27dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/availableBadRadio"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="@string/available_bad_radiobutton" />
+
+        <RadioButton
+            android:id="@+id/availableOKRadio"
+            android:layout_width="168dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/available_ok_radiobutton" />
+
+        <RadioButton
+            android:id="@+id/availableGoodRadio"
+            android:layout_width="204dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/available_good_radiobutton" />
+
+    </RadioGroup>
+
+    <Spinner
+        android:id="@+id/problemsSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/availableRadio"
+        android:entries="@array/problem_solving"
+        android:layout_marginTop="17dp" />
+
+    <TextView
+        android:id="@+id/timeWaitingTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/AvailabilityTextView"
+        android:layout_below="@+id/problemsSpinner"
+        android:layout_marginTop="15dp"
+        android:text="@string/time_waiting_text_view" />
+
+    <Chronometer
+        android:id="@+id/timeWaitingChronometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/timeWaitingTextView"
+        android:layout_alignBottom="@+id/timeWaitingTextView"
+        android:layout_alignEnd="@+id/SpecialCheckBox" />
+
+    <Button
+        android:id="@+id/startChronometerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/AvailabilityTextView"
+        android:text="@string/start_chronometer_button" />
+
+    <Button
+        android:id="@+id/pauseChronometerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/pause_chronometer_button" />
+
+    <Button
+        android:id="@+id/resetChronometerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/pauseChronometerButton"
+        android:text="@string/reset_chronometer_button" />
 
 
 </RelativeLayout>

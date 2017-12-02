@@ -4,8 +4,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.Chronometer;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.SeekBar;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class Calculator extends AppCompatActivity {
 
@@ -20,6 +29,29 @@ public class Calculator extends AppCompatActivity {
     EditText billBeforeTipET;
     EditText tipAmountET;
     EditText finalBillET;
+
+    private int[] checklistValues = new int[12];
+
+    CheckBox friendlyCheckBox;
+    CheckBox specialsCheckBox;
+    CheckBox opinionCheckBox;
+
+    RadioGroup availableRadioGroup;
+    RadioButton availableBadRadio;
+    RadioButton availableOKRadio;
+    RadioButton availableGoodRadio;
+
+    Spinner problemsSpinner;
+
+    Button startChronometerButton;
+    Button pauseChronometerButton;
+    Button resetChronometerButton;
+
+    Chronometer timeWaitingChronometer;
+
+    long secondsYouWaited = 0;
+
+    TextView timeWaitingTextView;
 
     SeekBar seekBar;
 
@@ -42,11 +74,40 @@ public class Calculator extends AppCompatActivity {
         tipAmountET = (EditText) findViewById(R.id.tipEditText);
         finalBillET = (EditText) findViewById(R.id.finalBillEditText);
 
-        seekBar = (SeekBar) findViewById(R.id.seekBar);
+        seekBar = (SeekBar) findViewById(R.id.SeekBar);
 
         seekBar.setOnSeekBarChangeListener(seekBarChangeListener);
 
         billBeforeTipET.addTextChangedListener(billBeforeTipListener);
+
+        friendlyCheckBox = (CheckBox) findViewById(R.id.FriendlyCheckBox);
+        specialsCheckBox = (CheckBox) findViewById(R.id.SpecialCheckBox);
+        opinionCheckBox = (CheckBox) findViewById(R.id.OpinionCheckBox);
+
+        setUpIntroCheckBoxes();
+
+
+        availableRadioGroup = (RadioGroup) findViewById(R.id.availableRadio);
+        availableBadRadio = (RadioButton) findViewById(R.id.availableBadRadio);
+        availableOKRadio = (RadioButton) findViewById(R.id.availableOKRadio);
+        availableGoodRadio = (RadioButton) findViewById(R.id.availableGoodRadio);
+
+        addChangeListenertoRadios();
+
+        problemsSpinner = (Spinner) findViewById(R.id.problemsSpinner);
+
+        addItemSelectedListenerToSpinner();
+
+        startChronometerButton = (Button) findViewById(R.id.startChronometerButton);
+        pauseChronometerButton = (Button) findViewById(R.id.pauseChronometerButton);
+        resetChronometerButton = (Button) findViewById(R.id.resetChronometerButton);
+
+        setButtonOnClickListener();
+
+        timeWaitingChronometer = (Chronometer) findViewById(R.id.timeWaitingChronometer);
+
+        timeWaitingTextView = (TextView) findViewById(R.id.timeWaitingTextView);
+
     }
 
     private TextWatcher billBeforeTipListener = new TextWatcher() {
@@ -83,7 +144,7 @@ public class Calculator extends AppCompatActivity {
     private SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
         @Override
         public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-            tipAmount = seekBar.getProgress() * .01;
+            tipAmount = (seekBar.getProgress()) * .01;
             tipAmountET.setText(String.format("%.02f", tipAmount));
 
             updateTipAndFinalBill();
@@ -101,11 +162,19 @@ public class Calculator extends AppCompatActivity {
     };
     private void updateTipAndFinalBill(){
 
-        double tipAmount = Double.parseDouble(tipAmountET.getText().toString());
+        double tipAmount = Double.parseDouble(tipAmountET.getText().toString().replace(",", "."));
+
 
         double finalBill = billBeforeTip + (tipAmount*billBeforeTip);
 
         finalBillET.setText(String.format("%.02f", finalBill));
     }
+
+    private void setUpIntroCheckBoxes() {
+        friendlyCheckBox.setOnCheckedChangeListener(new CheckBox().OnCheckedChangeListener());
+    //3:54 THIS IS WHERE WE LEFT OFF
+    }
+
+
 
 }
