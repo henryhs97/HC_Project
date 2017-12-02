@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sibdoo.calculator.Calculator">
+
+
+    <TextView
+        android:id="@+id/billTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="53dp"
+        android:text="@string/bill_text_view" />
+
+    <EditText
+        android:id="@+id/billEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/billTextView"
+        android:layout_alignBottom="@+id/billTextView"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/billTextView"
+        android:ems="5"
+        android:inputType="textPersonName|numberDecimal"
+        android:text="@string/bill_edit_view" />
+
+    <TextView
+        android:id="@+id/tipTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/billTextView"
+        android:layout_marginStart="17dp"
+        android:layout_toEndOf="@+id/billEditText"
+        android:text="@string/tip_text_view" />
+
+    <EditText
+        android:id="@+id/tipEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/billEditText"
+        android:layout_marginStart="20dp"
+        android:layout_toEndOf="@+id/tipTextView"
+        android:ems="4"
+        android:inputType="textPersonName|numberDecimal"
+        android:text="@string/tip_edit_text" />
+
+    <TextView
+        android:id="@+id/finalBillTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/billTextView"
+        android:layout_below="@+id/billEditText"
+        android:layout_marginTop="77dp"
+        android:text="@string/final_bill_text_view" />
+
+    <EditText
+        android:id="@+id/finalBillEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/billEditText"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="64dp"
+        android:layout_toEndOf="@+id/finalBillTextView"
+        android:ems="10"
+        android:inputType="textPersonName|numberDecimal"
+        android:text="@string/bill_edit_view" />
+
+    <TextView
+        android:id="@+id/SeekBarTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/finalBillEditText"
+        android:layout_marginTop="65dp"
+        android:layout_toEndOf="@+id/billTextView"
+        android:text="@string/change_tip_text_view" />
+
+    <SeekBar
+        android:id="@+id/SeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/finalBillEditText"
+        android:layout_alignStart="@+id/SeekBarTextView"
+        android:layout_below="@+id/SeekBarTextView"
+        android:layout_marginTop="26dp"
+        android:progress="15" />
+
+
+</RelativeLayout>
